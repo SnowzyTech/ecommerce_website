@@ -99,7 +99,7 @@ export const getStaticPaths = async  () => {
         paths: [
             
             // Object variant:
-            { params: { slug: 'second-post' } },
+            { params: { slug: "product.slug.current" } },
           ],
         fallback: 'blocking'
     } 
@@ -107,7 +107,7 @@ export const getStaticPaths = async  () => {
 export const getStaticProps = async ({ params: { slug }}) => {
 const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
 
-const productsQuery = '*[_type == "product"]'
+const productsQuery = `*[_type == "product"]`
     const product = await client.fetch(query);
     const products = await client.fetch(productsQuery)
     
